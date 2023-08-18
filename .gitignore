@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Dependencies
+server/node_modules
 node_modules
 .yarn/*
 !.yarn/patches
