@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { fetchVideos } from "../../api/videoHandler"
+import { fetchTags } from "../../api/tagHandler"
 
 /** <!-- InitialState Define explicit type --> */
 const initialState = {
@@ -9,21 +9,21 @@ const initialState = {
   error: "",
 }
 
-const videoSlice = createSlice({
-  name: "videos",
+const tagSlice = createSlice({
+  name: "tags",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchVideos.pending, (state) => {
+    builder.addCase(fetchTags.pending, (state) => {
       state.isLoading = true
       state.isError = false
     })
-    builder.addCase(fetchVideos.fulfilled, (state, action) => {
+    builder.addCase(fetchTags.fulfilled, (state, action) => {
       state.isLoading = false
       state.data = action.payload
       state.isError = false
     })
-    builder.addCase(fetchVideos.rejected, (state, action) => {
+    builder.addCase(fetchTags.rejected, (state, action) => {
       state.isLoading = false
       state.data = []
       state.isError = true
@@ -32,4 +32,4 @@ const videoSlice = createSlice({
   },
 })
 
-export default videoSlice.reducer
+export default tagSlice.reducer
