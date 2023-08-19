@@ -6,11 +6,11 @@ import Tag from "./Tag"
 
 export default function Tags() {
   const dispatch = useDispatch()
-  const { data, isLoading, isError, error } = useSelector((state) => state.tags)
+  const { data, isLoading, isError } = useSelector((state) => state.tags)
 
   useEffect(() => {
     dispatch(fetchTags())
-  }, [])
+  }, [dispatch])
 
   let content
 
