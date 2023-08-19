@@ -1,6 +1,18 @@
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchVideos } from "../../api/videoHandler"
 import VideoGridItem from "./VideoGridItem"
 
-export default function VideGrid() {
+const VideGrid: React.FC = () => {
+  const dispatch = useDispatch()
+  const { data, isLoading, isError, error } = useSelector(
+    (state) => state.videos,
+  )
+
+  useEffect(() => {
+    dispatch(fetchVideos())
+  }, [dispatch])
+
   return (
     <section className="pt-12">
       <section className="pt-12">
@@ -13,3 +25,4 @@ export default function VideGrid() {
     </section>
   )
 }
+export default VideGrid
