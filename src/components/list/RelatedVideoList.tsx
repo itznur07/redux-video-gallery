@@ -9,7 +9,7 @@ export default function RelatedVideoList({ video }) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchRelatedVideo({ tags, id }))
+    dispatch(fetchRelatedVideo({ tags, id: id }))
   }, [dispatch, tags, id])
 
   const { relatedVideo, isLoading, isError } = useSelector(
