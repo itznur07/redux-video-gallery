@@ -13,6 +13,8 @@ const singleVideoSlice = createSlice({
   name: "video",
   initialState,
   reducers: {},
+
+  /** <!-- Extra reducer function --> */
   extraReducers: (builder) => {
     builder.addCase(fetchVideo.pending, (state) => {
       state.isLoading = true
