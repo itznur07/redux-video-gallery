@@ -26,5 +26,5 @@ const filtersSlice = createSlice({
   },
 })
 
+export const { selectTag, removeTag, searched } = filtersSlice.actions
 export default filtersSlice.reducer
-const { selectTag, removeTag, searched } = filtersSlice.actions
