@@ -6,12 +6,12 @@ import VideoGridItem from "./VideoGridItem"
 
 const VideGrid: React.FC = () => {
   const dispatch = useDispatch()
-  const { data, isLoading, isError, error } = useSelector(
-    (state) => state.videos,
-  )
+  const { data, isLoading, isError } = useSelector((state) => state.videos)
+  const { tags: tags, search: search } = useSelector((state) => state.filters)
+
   useEffect(() => {
-    dispatch(fetchVideos())
-  }, [dispatch])
+    dispatch(fetchVideos({ tags, search }))
+  }, [dispatch, tags, search])
 
   let content
 
@@ -21,6 +21,12 @@ const VideGrid: React.FC = () => {
     content = data?.map((video) => (
       <VideoGridItem key={video.id} video={video} />
     ))
+
+  if (data.length > 0) {
+    content
+  } else {
+    content = <div className="text-center">Content is Not Founded!</div>
+  }
 
   return (
     <section className="pt-12">
